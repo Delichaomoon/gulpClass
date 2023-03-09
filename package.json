@@ -1,0 +1,48 @@
+{
+  "name": "gulp-class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "sass --style compressed --update src/scss:static/css",
+    "watch:css": "sass --watch src/scss:static/css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "browserslist": [
+    "last 5 version",
+    "> 5%"
+  ],
+  "dependencies": {
+    "browser-sync": "^2.28.3",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-order": "^1.2.0",
+    "gulp-sequence": "^1.0.0",
+    "gulp-uglify": "^3.0.2",
+    "main-bower-files": "^2.13.3",
+    "minimist": "^1.2.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "autoprefixer": "^10.4.13",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-load-plugins": "^2.0.8",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-watch": "^5.0.1",
+    "postcss": "^8.4.21",
+    "sass": "^1.58.3"
+  }
+}

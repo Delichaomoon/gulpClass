@@ -1,0 +1,22 @@
+{
+  "name": "gulp-class",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Delichaomoon <deligit.work@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Delichaomoon/gulpClass",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.6.3",
+    "bootstrap": "^5.2.3",
+    "vue": "^2.7.14"
+  }
+}
