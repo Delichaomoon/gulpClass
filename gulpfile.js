@@ -115,6 +115,9 @@ gulp.task('browser-sync', function() {
   });
 });
 
+gulp.task('deploy', () => gulp.src('./public/**/*').pipe($.ghPages()));
+
+
 gulp.task('build', gulpSequence('clean','jade','buildStyles','image','babel','vendorJS'))
 
 
