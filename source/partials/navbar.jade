@@ -1,3 +1,12 @@
+mixin link(url, name)
+  if(path === url)
+    li.nav-item
+      a.nav-link.active(aria-current='page' href='#{url}')
+        | #{name}
+  else
+    li.nav-item
+      a.nav-link(aria-current='page' href='#{url}')
+        | Mixin#{name}
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
   .container-fluid
     a.navbar-brand(href='#') Navbar
@@ -6,11 +15,5 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     #navbarNav.collapse.navbar-collapse
       ul.navbar-nav
         each item in menu.list
-          li.nav-item
-            a.nav-link.active(aria-current='page' href='#{item.url}') #{item.name}
-        //- li.nav-item
-        //-   a.nav-link(href='#') Features
-        //- li.nav-item
-        //-   a.nav-link(href='#') Pricing
-        //- li.nav-item
-        //-   a.nav-link.disabled Disabled
+          +link(item.url,item.name)
+          
