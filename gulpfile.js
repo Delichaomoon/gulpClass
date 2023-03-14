@@ -30,6 +30,15 @@ gulp.task('jade', function() {
     // var YOUR_LOCALS = {};
     gulp.src('./source/**/*.jade')
       .pipe($.plumber())
+      .pipe($.data(function(){
+          var khData = require('./source/data/data.json');
+          var menu = require('./source/data/menu.json');
+          var source = {
+            'khData': khData,
+            'menu': menu
+          };
+          return source;
+        }))
       .pipe($.jade({
         pretty: true
         // locals: YOUR_LOCALS
