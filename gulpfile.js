@@ -16,7 +16,7 @@ var options =minimist(process.argv.slice(2),envOptions)
 console.log(options);
 
 gulp.task('clean', function () {
-  return gulp.src(['./.tmp','./public'], {read: false})
+  return gulp.src(['./.tmp','./public'], {read: false, allowEmpty :true })
     .pipe($.clean());
 });
 
@@ -101,7 +101,7 @@ gulp.task('bower', function() {
   }))
     .pipe(gulp.dest('./.tmp/vendors'))
 });
-gulp.task('vendorJS',['bower'] ,function(){
+gulp.task('vendorJS' ,function(){
   return gulp.src(
     './.tmp/vendors/**/**.js',
     '.\node_modules\bootstrap\dist\js\bootstrap.bundle.min.js')
@@ -130,10 +130,40 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('deploy', () => gulp.src('./public/**/*').pipe($.ghPages()));
+// gulp.task('deploy', () => gulp.src('./public/**/*').pipe($.ghPages()));
 
 
-gulp.task('build', gulpSequence('clean','jade','buildStyles','image','babel','vendorJS'))
+// gulp.task('build', gulpSequence('clean','jade','buildStyles','image','babel','vendorJS'))
 
 
-gulp.task('default',['jade','buildStyles','babel','vendorJS','image','browser-sync','watch']);
+// gulp.task('default',['jade','buildStyles','babel','vendorJS','image','browser-sync','watch']);
+
+gulp.task('build',
+  gulp.series(
+    'clean',
+    'bower',
+    'vendorJS',
+    gulp.parallel('jade','buildStyles','babel','image')
+  )
+)
+
+gulp.task('default',
+  gulp.series(
+    'clean',
+    'bower',
+    'vendorJS',
+    gulp.parallel('jade','buildStyles','babel','image'),
+    function(done){
+      browserSync.init({
+        server: {
+            baseDir: "./public/"
+        },
+        reloadDebounce:2000
+      });
+      gulp.watch('./source/**/*.scss', gulp.series('buildStyles'));
+      gulp.watch('./source/**/*.jade', gulp.series('jade'));
+      gulp.watch('source/**/*.js',gulp.series('babel'));
+      done();
+    }
+  )
+)

@@ -6,23 +6,33 @@ block navbar
   
 
 block content
-  h1 #{menu.list[1].name}
-
-  hr
-
-  h1 
-    span head1  
-    | another head
-  ul
-    li
-      a(href="#") link
-    li
-      a(href="#") link
-    li
-      a(href="#") link
-  br
-  h1: a(href="#"): span 連結 
-  .container
-    form(action="")
-      label(for="email") 請輸入email
-      input#email.form-control.input-md(type="text")
+  .bg-primary.py-5
+    .container.my-5
+      .text-center.mb-4
+        img.img-fluid(src="images/gulp-w.svg", alt="", width="100")
+      h1.text-center.text-white 
+        | GULP 練習 
+        br.hidden-sm-up
+        | 菜鳥練功中
+  section.container.my-5
+    h2.text-center.mb-5
+      | 會什麼?
+    .row
+      .col-sm-4
+        .text-center
+          img(src="images/github-icon-1.svg", alt="" height="100")
+        h3.text-center.mt-4 gulp套件
+        p 其中包含pug 、 babel、concat、plumber...等等。
+      .col-sm-4
+        .text-center
+          img(src="images/sass-1.svg", alt="" height="100")
+        h3.text-center.mt-4 主流開發套件
+        p 建立 Sass、PostCSS、ES6 等等開發環境
+      .col-sm-4
+        .text-center
+          img(src="images/es6.svg", alt="" height="100")
+        h3.text-center.mt-4 上進的心
+        p 每次學習後都努力做好重點筆記!
+  section.container.py-5
+    .text-center
+      a.btn.btn-danger(href="https://pda.104.com.tw/profile/share/5d86sLFH4PPoO8qKpRaIfvbWZdGfckMI") 想更認識我?
