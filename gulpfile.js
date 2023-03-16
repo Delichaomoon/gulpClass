@@ -51,7 +51,10 @@ function buildStyles() {
   return gulp.src('./source/**/*.scss')
     .pipe($.plumber())
 		.pipe($.sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      includePaths:['./node_modules/bootstrap/scss']
+    })
+      .on('error', sass.logError))
     //編譯完成
     .pipe($.postcss([autoprefixer()]))
     .pipe($.if(options.env === "production", $.minifyCss()))
@@ -99,7 +102,9 @@ gulp.task('bower', function() {
     .pipe(gulp.dest('./.tmp/vendors'))
 });
 gulp.task('vendorJS',['bower'] ,function(){
-  return gulp.src('./.tmp/vendors/**/**.js')
+  return gulp.src(
+    './.tmp/vendors/**/**.js',
+    '.\node_modules\bootstrap\dist\js\bootstrap.bundle.min.js')
   .pipe($.order([
     'jquery.js',
     'bootstrap.js'
@@ -120,7 +125,8 @@ gulp.task('browser-sync', function() {
   browserSync.init({
     server: {
         baseDir: "./public/"
-    }
+    },
+    reloadDebounce:2000
   });
 });
 

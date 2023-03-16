@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "jquery": "^3.6.3",
-    "bootstrap": "^5.2.3",
     "vue": "^2.7.14"
   }
 }

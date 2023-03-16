@@ -16,6 +16,7 @@
     "> 5%"
   ],
   "dependencies": {
+    "bootstrap": "^5.3.0-alpha1",
     "browser-sync": "^2.28.3",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
